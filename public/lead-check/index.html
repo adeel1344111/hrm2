@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Check | HRM2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(30, 41, 59, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6, #d946ef);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .input-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 20px;
+      font-family: 'Outfit', monospace;
+      letter-spacing: 0.06em;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: #f1f5f9;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: rgba(139, 92, 246, 0.6);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      color: #fff;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+
+    button:hover { opacity: 0.92; }
+    button:active { transform: scale(0.99); }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .result {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 14px;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .result.show { display: block; }
+
+    .result.block {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .result.allow {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .result.error {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    .result-text {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .result-text:last-child {
+      margin-bottom: 0;
+    }
+
+    .result.block .result-text { color: #f87171; }
+    .result.allow .result-text { color: #4ade80; }
+    .result.error .result-text { color: #fbbf24; font-size: 16px; }
+
+    .result-detail {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.8;
+    }
+
+    .campaign-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .campaign-item {
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .normalized {
+      font-family: monospace;
+      color: #e2e8f0;
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Lead Check</h1>
+    <p class="subtitle">Enter a phone number to check if it already exists in verification submissions.</p>
+
+    <form id="check-form">
+      <label for="phone">Phone Number</label>
+      <div class="input-wrap">
+        <input
+          type="text"
+          id="phone"
+          name="phone"
+          placeholder="e.g. 9453435343"
+          autocomplete="off"
+          inputmode="numeric"
+          maxlength="20"
+          autofocus
+        >
+      </div>
+      <button type="submit" id="submit-btn">Check Number</button>
+    </form>
+
+    <div id="result" class="result">
+      <div id="result-text" class="result-text"></div>
+      <div id="result-detail" class="result-detail"></div>
+    </div>
+  </div>
+
+  <script>
+    const phoneInput = document.getElementById('phone');
+    const form = document.getElementById('check-form');
+    const resultBox = document.getElementById('result');
+    const resultText = document.getElementById('result-text');
+    const resultDetail = document.getElementById('result-detail');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function normalizePhone(value) {
+      let digits = String(value).replace(/\D/g, '');
+      if (digits.length === 11 && digits.startsWith('1')) {
+        digits = digits.slice(1);
+      }
+      return digits;
+    }
+
+    phoneInput.addEventListener('input', () => {
+      const pos = phoneInput.selectionStart;
+      const before = phoneInput.value.length;
+      phoneInput.value = normalizePhone(phoneInput.value);
+      const diff = before - phoneInput.value.length;
+      phoneInput.setSelectionRange(Math.max(0, pos - diff), Math.max(0, pos - diff));
+    });
+
+    phoneInput.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const pasted = (e.clipboardData || window.clipboardData).getData('text');
+      phoneInput.value = normalizePhone(pasted);
+    });
+
+    function showResult(type, title, detail) {
+      resultBox.className = 'result show ' + type;
+      resultText.textContent = title;
+      resultDetail.innerHTML = detail;
+      resultDetail.style.display = detail ? 'block' : 'none';
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const phone = normalizePhone(phoneInput.value);
+      if (!phone) {
+        showResult('error', 'Please enter a phone number.', '');
+        return;
+      }
+      if (phone.length < 10) {
+        showResult('error', 'Phone number must be at least 10 digits.', '');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Checking...';
+      resultBox.className = 'result';
+
+      try {
+        const res = await fetch('/lead-check/api/check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          showResult('error', data.error || 'Something went wrong.', '');
+          return;
+        }
+
+        if (data.found) {
+          const campaigns = (data.campaigns || [])
+            .map((c) => `<div class="campaign-item">${c}</div>`)
+            .join('');
+          showResult('block', 'Do not transfer', campaigns ? `<div class="campaign-list">${campaigns}</div>` : '');
+        } else {
+          showResult('allow', 'You can transfer', '');
+        }
+      } catch {
+        showResult('error', 'Could not reach the server.', 'Please try again in a moment.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Check Number';
+      }
+    });
+  </script>
+</body>
+</html>

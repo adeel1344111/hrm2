@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve existing files/directories, otherwise route to standard 404
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/_next/
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # Redirect paths without a trailing slash to trailing slash (as configured in Next.js)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteRule ^(.*)$ $1/ [L,R=301]
+</IfModule>
+
+<IfModule mod_mime.c>
+  # Ensure correct MIME type for .js and .css files
+  AddType application/javascript .js
+  AddType text/css .css
+</IfModule>

@@ -1,0 +1,152 @@
+@extends('layouts.master')
+@section('title') Create Department @endsection
+@section('content')
+<!-- Page-content -->
+<div class="group-data-[sidebar-size=lg]:ltr:md:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:md:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:ml-vertical-menu-sm group-data-[sidebar-size=sm]:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_0.8)] px-4 group-data-[navbar=bordered]:pt-[calc(theme('spacing.header')_*_1.3)] group-data-[navbar=hidden]:pt-0 group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl group-data-[layout=horizontal]:px-0 group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:ltr:md:ml-auto group-data-[layout=horizontal]:group-data-[sidebar-size=lg]:rtl:md:mr-auto group-data-[layout=horizontal]:md:pt-[calc(theme('spacing.header')_*_1.6)] group-data-[layout=horizontal]:px-3 group-data-[layout=horizontal]:group-data-[navbar=hidden]:pt-[calc(theme('spacing.header')_*_0.9)]">
+    <div class="container-fluid group-data-[content=boxed]:max-w-boxed mx-auto">
+        <div class="flex flex-col gap-2 py-4 md:flex-row md:items-center print:hidden">
+            <div class="grow">
+                <h5 class="text-16">Create Department</h5>
+            </div>
+            <ul class="flex items-center gap-2 text-sm font-normal shrink-0">
+                <li class="relative before:content-['\ea54'] before:font-remix ltr:before:-right-1 rtl:before:-left-1  before:absolute before:text-[18px] before:-top-[3px] ltr:pr-4 rtl:pl-4 before:text-slate-400 dark:text-zink-200">
+                    <a href="{{ route('departments.index') }}" class="text-slate-400 dark:text-zink-200">Departments</a>
+                </li>
+                <li class="text-slate-700 dark:text-zink-100">Create</li>
+            </ul>
+        </div>
+        
+
+        <div class="card">
+            <div class="card-body">
+                <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+                    <div>
+                        <h6 class="text-15">Add New Department</h6>
+                        <p class="text-slate-500 dark:text-zink-200">Fill in the details to create a new department</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="{{ route('departments.index') }}" class="text-slate-500 btn bg-slate-100 border-slate-200 hover:text-slate-600 hover:bg-slate-200 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-200 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-200 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-500 dark:text-zink-200 dark:border-zink-500 dark:hover:bg-zink-400 dark:hover:text-zink-100 dark:focus:bg-zink-400 dark:focus:text-zink-100 dark:focus:ring-zink-100 dark:active:bg-zink-400 dark:active:text-zink-100 dark:active:ring-zink-100">
+                            <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i>
+                            Back to Departments
+                        </a>
+                    </div>
+                </div>
+
+                <form action="{{ route('departments.store') }}" method="POST" id="departmentForm">
+                    @csrf
+                    
+                    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                        <div class="lg:col-span-2">
+                            <label for="name" class="inline-block mb-2 text-base font-medium">
+                                Department Name <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <input type="text" id="name" name="name" value="{{ old('name') }}" 
+                                       class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 pr-10"
+                                       placeholder="Enter department name" required>
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <i data-lucide="building" class="w-4 h-4 text-slate-400"></i>
+                                </div>
+                            </div>
+                            @error('name')
+                                <p class="mt-1 text-sm text-red-500 flex items-center gap-1">
+                                    <i data-lucide="alert-circle" class="w-3 h-3"></i>
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="code" class="inline-block mb-2 text-base font-medium">
+                                Department Code <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <input type="text" id="code" name="code" value="{{ old('code') }}" 
+                                       class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800 placeholder:text-slate-400 dark:placeholder:text-zink-200 pr-10"
+                                       placeholder="e.g., HR, IT, FIN" required maxlength="10">
+                                <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                    <i data-lucide="hash" class="w-4 h-4 text-slate-400"></i>
+                                </div>
+                            </div>
+                            @error('code')
+                                <p class="mt-1 text-sm text-red-500 flex items-center gap-1">
+                                    <i data-lucide="alert-circle" class="w-3 h-3"></i>
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="status" class="inline-block mb-2 text-base font-medium">
+                                Status <span class="text-red-500">*</span>
+                            </label>
+                            <select id="status" name="status" 
+                                    class="form-input border-slate-200 dark:border-zink-500 focus:outline-none focus:border-custom-500 disabled:bg-slate-100 dark:disabled:bg-zink-600 disabled:border-slate-300 dark:disabled:border-zink-500 dark:disabled:text-zink-200 disabled:text-slate-500 dark:text-zink-100 dark:bg-zink-700 dark:focus:border-custom-800" required>
+                                <option value="">Select Status</option>
+                                <option value="active" {{ old('status') === 'active' ? 'selected' : '' }}>Active</option>
+                                <option value="inactive" {{ old('status') === 'inactive' ? 'selected' : '' }}>Inactive</option>
+                            </select>
+                            @error('status')
+                                <p class="mt-1 text-sm text-red-500 flex items-center gap-1">
+                                    <i data-lucide="alert-circle" class="w-3 h-3"></i>
+                                    {{ $message }}
+                                </p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="flex justify-end gap-2 mt-8 pt-6 border-t border-slate-200 dark:border-zink-500">
+                        <a href="{{ route('departments.index') }}" class="text-slate-500 btn bg-slate-100 border-slate-200 hover:text-slate-600 hover:bg-slate-200 hover:border-slate-300 focus:text-slate-600 focus:bg-slate-200 focus:border-slate-300 focus:ring focus:ring-slate-100 active:text-slate-600 active:bg-slate-200 active:border-slate-300 active:ring active:ring-slate-100 dark:bg-zink-500 dark:text-zink-200 dark:border-zink-500 dark:hover:bg-zink-400 dark:hover:text-zink-100 dark:focus:bg-zink-400 dark:focus:text-zink-100 dark:focus:ring-zink-100 dark:active:bg-zink-400 dark:active:text-zink-100 dark:active:ring-zink-100">
+                            Cancel
+                        </a>
+                        <button type="submit" class="text-white btn bg-custom-500 border-custom-500 hover:text-white hover:bg-custom-600 hover:border-custom-600 focus:text-white focus:bg-custom-600 focus:border-custom-600 focus:ring focus:ring-custom-100 active:text-white active:bg-custom-600 active:border-custom-600 active:ring active:ring-custom-100 dark:ring-custom-400/20">
+                            <i data-lucide="save" class="w-4 h-4 mr-1"></i>
+                            Create Department
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Page-content -->
+
+@section('script')
+<script>
+// Auto-generate code from name
+document.getElementById('name').addEventListener('input', function(e) {
+    const name = e.target.value;
+    const codeField = document.getElementById('code');
+    
+    if (!codeField.value) {
+        const code = name.replace(/[^a-zA-Z0-9]/g, '').substring(0, 10).toUpperCase();
+        codeField.value = code;
+    }
+});
+
+// Form validation
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('departmentForm');
+    form.addEventListener('submit', function(e) {
+        const requiredFields = form.querySelectorAll('[required]');
+        let isValid = true;
+        
+        requiredFields.forEach(field => {
+            if (!field.value.trim()) {
+                field.classList.add('border-red-500');
+                isValid = false;
+            } else {
+                field.classList.remove('border-red-500');
+            }
+        });
+        
+        if (!isValid) {
+            e.preventDefault();
+            alert('Please fill in all required fields.');
+        }
+    });
+});
+</script>
+@endsection
+@endsection

@@ -1,0 +1,8 @@
+[2026-08-06 09:05:51] production.ERROR: Allowed memory size of 134217728 bytes exhausted (tried to allocate 31249048 bytes) {"userId":1049,"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Allowed memory size of 134217728 bytes exhausted (tried to allocate 31249048 bytes) at /var/www/hrm2/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php:63)
+[stacktrace]
+#0 {main}
+"} 
+[2026-08-06 09:07:15] production.ERROR: Allowed memory size of 134217728 bytes exhausted (tried to allocate 26793056 bytes) {"userId":1049,"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Allowed memory size of 134217728 bytes exhausted (tried to allocate 26793056 bytes) at /var/www/hrm2/vendor/laravel/framework/src/Illuminate/View/Engines/PhpEngine.php:63)
+[stacktrace]
+#0 {main}
+"} 

@@ -1,0 +1,28 @@
+[2026-07-30 11:37:05] production.ERROR: Type of Carbon\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of Carbon\\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int at /var/www/hrm2/vendor/nesbot/carbon/src/Carbon/CarbonPeriod.php:184)
+[stacktrace]
+#0 {main}
+"} 
+[2026-07-30 11:37:05] production.ERROR: Type of Carbon\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of Carbon\\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int at /var/www/hrm2/vendor/nesbot/carbon/src/Carbon/CarbonPeriod.php:184)
+[stacktrace]
+#0 {main}
+"} 
+[2026-07-30 11:37:05] production.ERROR: Type of Carbon\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of Carbon\\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int at /var/www/hrm2/vendor/nesbot/carbon/src/Carbon/CarbonPeriod.php:184)
+[stacktrace]
+#0 {main}
+"} 
+[2026-07-30 23:41:17] production.ERROR: Type of Carbon\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of Carbon\\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int at /var/www/hrm2/vendor/nesbot/carbon/src/Carbon/CarbonPeriod.php:184)
+[stacktrace]
+#0 {main}
+"} 
+[2026-07-30 23:41:17] production.ERROR: Type of Carbon\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of Carbon\\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int at /var/www/hrm2/vendor/nesbot/carbon/src/Carbon/CarbonPeriod.php:184)
+[stacktrace]
+#0 {main}
+"} 
+[2026-07-30 23:45:04] production.ERROR: Type of Carbon\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of Carbon\\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int at /var/www/hrm2/vendor/nesbot/carbon/src/Carbon/CarbonPeriod.php:184)
+[stacktrace]
+#0 {main}
+"} 
+[2026-07-30 23:45:12] production.ERROR: Type of Carbon\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Type of Carbon\\CarbonPeriod::EXCLUDE_START_DATE must be compatible with DatePeriod::EXCLUDE_START_DATE of type int at /var/www/hrm2/vendor/nesbot/carbon/src/Carbon/CarbonPeriod.php:184)
+[stacktrace]
+#0 {main}
+"} 

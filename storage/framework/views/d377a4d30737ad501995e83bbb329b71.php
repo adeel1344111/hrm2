@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="light scroll-smooth group" data-layout="vertical" data-sidebar="light" data-sidebar-size="lg" data-mode="light" data-topbar="light" data-skin="default" data-navbar="sticky" data-content="fluid" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>404 | HR Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta content="Human Resource Management System" name="description">
+    <meta content="HRM System" name="author">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="<?php echo e(URL::to('assets/images/favicon.ico')); ?>">
+    <!-- Layout config Js -->
+    <script src="<?php echo e(URL::to('assets/js/layout.js')); ?>"></script>
+    <!-- HR System CSS -->
+    <link rel="stylesheet" href="<?php echo e(URL::to('assets/css/hrm-system.css')); ?>">
+</head>
+
+<body class="flex items-center justify-center min-h-screen py-16 bg-cover bg-auth-pattern dark:bg-auth-pattern-dark font-public bg-white/70 dark:bg-zink-500/70">
+
+    <?php echo $__env->yieldContent('content'); ?>
+
+    <script src='<?php echo e(URL::to('assets/libs/choices.js/public/assets/scripts/choices.min.js')); ?>'></script>
+    <script src="<?php echo e(URL::to('assets/libs/%40popperjs/core/umd/popper.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::to('assets/libs/tippy.js/tippy-bundle.umd.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::to('assets/libs/simplebar/simplebar.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::to('assets/libs/prismjs/prism.js')); ?>"></script>
+    <script src="<?php echo e(URL::to('assets/libs/lucide/umd/lucide.js')); ?>"></script>
+    <script src="<?php echo e(URL::to('assets/js/hrm-system.bundle.js')); ?>"></script>
+</body>
+
+</html><?php /**PATH /var/www/hrm2/resources/views/layouts/error.blade.php ENDPATH**/ ?>
